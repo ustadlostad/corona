@@ -21,6 +21,8 @@ public class HomeController {
         ApiCaller.turkeyApiHealthCheck("https://api.covid19api.com/total/dayone/country/turkey");
         ApiData.apiDataCollectorTurkey();
 
+        ApiData.turkeyGraphConfirmedCases();
+
         model.addAttribute("newConfirmed", ApiData.formattedNewConfirmed);
         model.addAttribute("totalConfirmed", ApiData.formattedTotalConfirmed);
         model.addAttribute("newDeaths", ApiData.formattedNewDeaths);
@@ -30,6 +32,10 @@ public class HomeController {
         model.addAttribute("turkeyRecovered",ApiData.formattedTurkeyRecoveredCases);
         model.addAttribute("turkeyDeaths",ApiData.formattedTurkeyDeaths);
         model.addAttribute("turkeyConfirmed",ApiData.formattedTurkeyConfirmedCases);
+
+        model.addAttribute("yaxis", ApiData.arrlistIntiger);
+
+
 
 
         return "homepage";

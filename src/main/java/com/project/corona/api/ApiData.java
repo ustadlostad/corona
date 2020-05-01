@@ -7,12 +7,14 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ApiData {
 
     static public String inline;
     static public String inline2;
+    static public String inline3;
 
     static public int intNewConfirmed;
     static public int intTotalConfirmed;
@@ -39,6 +41,9 @@ public class ApiData {
    static ApiCaller apiCaller = new ApiCaller();
    static StringToIntegerParser stringToIntegerParser = new StringToIntegerParser();
    static DecimalFormat formatter = new DecimalFormat("#,###,###");
+
+   static public ArrayList<String> arrlistString = new ArrayList<String>();
+   static public ArrayList<Integer> arrlistIntiger = new ArrayList<Integer>();
 
     public static void apiDataCollectorGlobal() throws IOException, JSONException {
 
@@ -115,9 +120,39 @@ public class ApiData {
 
     }
 
-    /* for(int i=0;i<jsonArray.length();i++){
-        String abc = jsonArray.getJSONObject(i).getString("Country");
+    static public void turkeyGraphConfirmedCases() throws IOException, JSONException {
+
+
+
+
+        Scanner scanner = new Scanner(apiCaller.url2.openStream());
+
+        while(scanner.hasNext()){
+            inline3 = scanner.nextLine()+inline3;
+        }
+        System.out.println(inline3);
+
+        //JSON Parser for Turkey (It is an array)
+        JSONArray jsonArray = new JSONArray(inline3);
+
+        for(int i=0;i<jsonArray.length();i++){
+        String abc = jsonArray.getJSONObject(i).getString("Confirmed");
+        int abcd = stringToIntegerParser.parser(jsonArray.getJSONObject(i).getString("Confirmed"));
         System.out.println(abc);
+        arrlistString.add(abc);
+
+        System.out.println(abcd);
+        arrlistIntiger.add(abcd);
     }
-    */
+
+        System.out.println(arrlistString.get(2).getClass());
+        System.out.println(arrlistString.get(34));
+
+        System.out.println(arrlistIntiger.get(2).getClass());
+        System.out.println(arrlistIntiger.get(34));
+
+
+    }
+
+
 }
