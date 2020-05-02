@@ -1,5 +1,6 @@
 package com.project.corona.api;
 
+import com.project.corona.functions.DateDataArrenger;
 import com.project.corona.functions.StringToIntegerParser;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -44,6 +45,7 @@ public class ApiData {
 
    static public ArrayList<String> arrlistString = new ArrayList<String>();
    static public ArrayList<Integer> arrlistIntiger = new ArrayList<Integer>();
+   static public ArrayList<String> dataDateArrayList = new ArrayList<String>();
 
     public static void apiDataCollectorGlobal() throws IOException, JSONException {
 
@@ -136,21 +138,23 @@ public class ApiData {
         JSONArray jsonArray = new JSONArray(inline3);
 
         for(int i=0;i<jsonArray.length();i++){
-        String abc = jsonArray.getJSONObject(i).getString("Confirmed");
-        int abcd = stringToIntegerParser.parser(jsonArray.getJSONObject(i).getString("Confirmed"));
-        System.out.println(abc);
-        arrlistString.add(abc);
+        String confirmedNumberString = jsonArray.getJSONObject(i).getString("Confirmed");
+        int confirmedNumberInteger = stringToIntegerParser.parser(jsonArray.getJSONObject(i).getString("Confirmed"));
+        System.out.println(confirmedNumberString);
+        arrlistString.add(confirmedNumberString);
 
-        System.out.println(abcd);
-        arrlistIntiger.add(abcd);
+        System.out.println(confirmedNumberInteger);
+        arrlistIntiger.add(confirmedNumberInteger);
     }
 
-        System.out.println(arrlistString.get(2).getClass());
-        System.out.println(arrlistString.get(34));
 
-        System.out.println(arrlistIntiger.get(2).getClass());
-        System.out.println(arrlistIntiger.get(34));
+        for(int i=0;i<jsonArray.length();i++){
+            String dataDates = jsonArray.getJSONObject(i).getString("Date");
+            String dataDatesTrimmed = DateDataArrenger.arrenger(dataDates);
+            dataDateArrayList.add(dataDatesTrimmed);
+        }
 
+        System.out.println(dataDateArrayList);
 
     }
 

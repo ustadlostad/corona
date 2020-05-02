@@ -94,7 +94,7 @@
 <br>
 
 <div>
-    <canvas id="myChart" width="100" height="400"></canvas>
+    <canvas id="myChart" width="100" height="500"></canvas>
 </div>
 
 <br>
@@ -103,7 +103,7 @@
 <br>
 
 <div>
-    <canvas id="lineChart" width="100" height="400"></canvas>
+    <canvas id="lineChart" width="100" height="500"></canvas>
 </div>
 
 
@@ -116,16 +116,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-    var graphData = [[${yaxis}]];
-    console.log(graphData)
+    var graphDataYaxis = [${yAxis}];
+    var graphDataXaxis = [${xAxis}];
+    console.log(graphDataXaxis);
+    console.log(graphDataYaxis);
     const ctx = 'myChart';
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels:[graphDataXaxis],
             datasets: [{
-                label: '# of Votes',
-                data: graphData,
+                label: '# of Cases',
+                data:[graphDataYaxis],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -151,61 +153,19 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: false
                     }
+                }],
+                xAxes: [{
+                   ticks:{
+                       stepSize: 30
+                   }
                 }]
             }
         }
     });
 
 </script>
-
-<script>
-    var graphData2 = [[${yaxis}]];
-    console.log(graphData2)
-    const CHART = document.getElementById("lineChart");
-
-    let lineChart = new Chart(CHART,{
-        type: 'line',
-        data: {
-            labels: graphData2,
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fill: false,
-                    lineTension: 0.1,
-                    backgroundColor: "rgba(75, 192, 192, 0.4)",
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(75,192,192,1)",
-                    pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHitRadius: 10,
-                    data: graphData2,
-                },
-
-            ]
-        },
-        options:{
-            showLines:true,
-            responsive: true,
-            maintainAspectRatio: false,
-            scales:{
-                yAxes:[{
-                    ticks:{
-                        beginAtZero:true,
-                    }
-                }]
-            }
-        }
-    });
-
-</script>
-
 
 </body>
 </html>
