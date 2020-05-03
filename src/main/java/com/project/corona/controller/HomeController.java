@@ -34,7 +34,7 @@ public class HomeController {
         model.addAttribute("turkeyConfirmed",ApiData.formattedTurkeyConfirmedCases);
 
         model.addAttribute("yAxis", ApiData.arrlistIntiger);
-        model.addAttribute("xAxis",ApiData.dataDateArrayList);
+        model.addAttribute("xAxis",ApiData.anasininami);
 
 
         return "homepage";

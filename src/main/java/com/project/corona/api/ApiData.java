@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ApiData {
 
@@ -46,6 +47,8 @@ public class ApiData {
    static public ArrayList<String> arrlistString = new ArrayList<String>();
    static public ArrayList<Integer> arrlistIntiger = new ArrayList<Integer>();
    static public ArrayList<String> dataDateArrayList = new ArrayList<String>();
+
+   static public String anasininami;
 
     public static void apiDataCollectorGlobal() throws IOException, JSONException {
 
@@ -124,8 +127,8 @@ public class ApiData {
 
     static public void turkeyGraphConfirmedCases() throws IOException, JSONException {
 
-
-
+        arrlistIntiger.clear();
+        dataDateArrayList.clear();
 
         Scanner scanner = new Scanner(apiCaller.url2.openStream());
 
@@ -140,21 +143,25 @@ public class ApiData {
         for(int i=0;i<jsonArray.length();i++){
         String confirmedNumberString = jsonArray.getJSONObject(i).getString("Confirmed");
         int confirmedNumberInteger = stringToIntegerParser.parser(jsonArray.getJSONObject(i).getString("Confirmed"));
-        System.out.println(confirmedNumberString);
+
         arrlistString.add(confirmedNumberString);
 
-        System.out.println(confirmedNumberInteger);
         arrlistIntiger.add(confirmedNumberInteger);
     }
 
+        System.out.println(arrlistIntiger);
 
         for(int i=0;i<jsonArray.length();i++){
             String dataDates = jsonArray.getJSONObject(i).getString("Date");
             String dataDatesTrimmed = DateDataArrenger.arrenger(dataDates);
             dataDateArrayList.add(dataDatesTrimmed);
+
         }
 
         System.out.println(dataDateArrayList);
+
+        anasininami = dataDateArrayList.stream().collect(Collectors.joining("','", "'", "'"));
+        System.out.println(anasininami);
 
     }
 
