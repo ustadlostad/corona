@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
+
 <body>
 
 <script type="text/javascript" src = https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js></script>
@@ -29,56 +30,46 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<h1 style="text-align: center">Global Stats</h1>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1 style="text-align: center">Global Stats</h1>
+<br>
 
-            <ul class="list-group">
+    <div>
+        <ul class="list-group mx-auto" style="width: 500px">
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Total Confirmed Cases
-                    <span class="badge badge-primary badge-pill">${totalConfirmed}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Total Confirmed Cases
+                <span class="badge badge-primary badge-pill">${totalConfirmed}</span>
+            </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    New Confirmed Cases
-                    <span class="badge badge-primary badge-pill">${newConfirmed}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                New Confirmed Cases
+                <span class="badge badge-primary badge-pill">${newConfirmed}</span>
+            </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Total Deaths
-                    <span class="badge badge-primary badge-pill">${totalDeaths}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Total Deaths
+                <span class="badge badge-primary badge-pill">${totalDeaths}</span>
+            </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    New Deaths
-                    <span class="badge badge-primary badge-pill">${newDeaths}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                New Deaths
+                <span class="badge badge-primary badge-pill">${newDeaths}</span>
+            </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Total Recovered
-                    <span class="badge badge-primary badge-pill">${totalRecovered}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Total Recovered
+                <span class="badge badge-primary badge-pill">${totalRecovered}</span>
+            </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    New Recovered
-                    <span class="badge badge-primary badge-pill">${newRecovered}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                New Recovered
+                <span class="badge badge-primary badge-pill">${newRecovered}</span>
+            </li>
 
-            </ul>
-        </div>
-        <div class="col">
-            Buraya grafik geceke
-        </div>
+        </ul>
     </div>
-</div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <br>
     <br>
     <br>
@@ -86,46 +77,51 @@
     <br>
     <br>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h1 style="text-align: center">Turkey</h1>
+<h1 style="text-align: center">Turkey</h1>
 
-            <ul class="list-group">
+    <ul class="list-group mx-auto" style="width: 500px">
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Confirmed Cases
-                    <span class="badge badge-primary badge-pill">${turkeyConfirmed}</span>
-                </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Confirmed Cases
+            <span class="badge badge-primary badge-pill">${turkeyConfirmed}</span>
+        </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Deaths
-                    <span class="badge badge-primary badge-pill">${turkeyDeaths}</span>
-                </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Deaths
+            <span class="badge badge-primary badge-pill">${turkeyDeaths}</span>
+        </li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Recovered Cases
-                    <span class="badge badge-primary badge-pill">${turkeyRecovered}</span>
-                </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Recovered Cases
+            <span class="badge badge-primary badge-pill">${turkeyRecovered}</span>
+        </li>
 
-            </ul>
-        </div>
-        <div class="col-sm-8">
-            <div>
-                <canvas id="my1Chart" height="500"></canvas>
-            </div>>
-        </div>
-    </div>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Last Updated
+            <span class="badge badge-primary badge-pill">${lastUpdate}</span>
+        </li>
+
+    </ul>
+
+<br>
+<br>
+
+<div>
+    <canvas id="my1Chart" height="400" width="1200" style="margin: auto"></canvas>
 </div>
 
 <script>
 
     var ctx1 = document.getElementById("my1Chart").getContext('2d');
 
-    var graphDataYaxis = ${yAxis};
+    var confirmedCasesDayByDay = ${confirmedCasesDayByDay};
     var graphDataXaxis = [${xAxis}];
+    var deathDataDayByDay = ${deathsNumbersDayByDay};
+    var recoveredDataDayByDay = ${recoveredNumbersDayByDay};
 
-    console.log(graphDataYaxis);
+    console.log(confirmedCasesDayByDay);
+    console.log(deathDataDayByDay);
+    console.log(recoveredDataDayByDay);
     console.log(graphDataXaxis);
 
     var my1Chart = new Chart(ctx1, {
@@ -136,28 +132,54 @@
             fill: true,
             datasets: [{
                 label: 'Confirmed Cases Day By Day', // Name the series
-                data: graphDataYaxis, // Specify the data values array
+                data: confirmedCasesDayByDay, // Specify the data values array
                 fill: false,
-                borderColor: '#2196f3', // Add custom color border (Line)
-                backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+                borderColor: '#FAE701', // Add custom color border (Line)
+                backgroundColor: '#FAE701', // Add custom color background (Points and Fill)
                 borderWidth: 3 // Specify bar border width
-            }]},
+            },
+
+            {
+                label: 'Deaths', // Name the series
+                data: deathDataDayByDay, // Specify the data values array
+                fill: false,
+                borderColor: '#FE2F06', // Add custom color border (Line)
+                backgroundColor: '#FE2F06', // Add custom color background (Points and Fill)
+                borderWidth: 3 // Specify bar border width
+            },
+
+            {
+                label: 'Recovered', // Name the series
+                data: recoveredDataDayByDay, // Specify the data values array
+                fill: false,
+                borderColor: '#11DB14', // Add custom color border (Line)
+                backgroundColor: '#11DB14', // Add custom color background (Points and Fill)
+                borderWidth: 3 // Specify bar border width
+            }
+
+            ]},
         options: {
-            responsive: true, // Instruct chart js to respond nicely.
+            responsive: false, // Instruct chart js to respond nicely.
             maintainAspectRatio: false, // Add to prevent default behaviour of full-width/heigh
             scales:{
                 yAxes:[{
                     ticks:{
-                        beginAtZero:true
+                        beginAtZero:true,
                     }
 
                 }
 
-                ]
+                ],
+                xAxes:[{
+                    ticks: {
+
+                    }
+                }]
             }
 
         }
     });
+
 </script>
 
 

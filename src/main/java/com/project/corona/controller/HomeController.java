@@ -33,9 +33,11 @@ public class HomeController {
         model.addAttribute("turkeyDeaths",ApiData.formattedTurkeyDeaths);
         model.addAttribute("turkeyConfirmed",ApiData.formattedTurkeyConfirmedCases);
 
-        model.addAttribute("yAxis", ApiData.arrlistIntiger);
-        model.addAttribute("xAxis",ApiData.anasininami);
-
+        model.addAttribute("confirmedCasesDayByDay", ApiData.arrlistIntiger);
+        model.addAttribute("xAxis",ApiData.graphXaxis);
+        model.addAttribute("deathsNumbersDayByDay",ApiData.turkeyDeathData);
+        model.addAttribute("recoveredNumbersDayByDay",ApiData.turkeyRecoveredData);
+        model.addAttribute("lastUpdate",ApiData.a);
 
         return "homepage";
     }

@@ -17,6 +17,7 @@ public class ApiData {
     static public String inline;
     static public String inline2;
     static public String inline3;
+    static public String a;
 
     static public int intNewConfirmed;
     static public int intTotalConfirmed;
@@ -44,23 +45,27 @@ public class ApiData {
    static StringToIntegerParser stringToIntegerParser = new StringToIntegerParser();
    static DecimalFormat formatter = new DecimalFormat("#,###,###");
 
-   static public ArrayList<String> arrlistString = new ArrayList<String>();
    static public ArrayList<Integer> arrlistIntiger = new ArrayList<Integer>();
    static public ArrayList<String> dataDateArrayList = new ArrayList<String>();
+   static public ArrayList<Integer> turkeyDeathData = new ArrayList<Integer>();
+    static public ArrayList<Integer> turkeyRecoveredData = new ArrayList<Integer>();
 
-   static public String anasininami;
+   static public String graphXaxis;
 
     public static void apiDataCollectorGlobal() throws IOException, JSONException {
 
         Scanner scanner = new Scanner(apiCaller.url1.openStream());
 
         while (scanner.hasNext()){
-            inline = scanner.nextLine()+inline;
+            inline = inline + scanner.nextLine();
         }
 
-        System.out.println(inline);
+        System.out.println("inline :" +inline);
+        String inlinesub =  inline.substring(4);
+        System.out.println(inlinesub);
+
         //JsonParser General Stats
-        JSONObject jsonObject = new JSONObject(inline);
+        JSONObject jsonObject = new JSONObject(inlinesub);
         String newConfirmed = jsonObject.getJSONObject("Global").getString("NewConfirmed");
         String totalConfirmed = jsonObject.getJSONObject("Global").getString("TotalConfirmed");
         String newDeaths = jsonObject.getJSONObject("Global").getString("NewDeaths");
@@ -99,12 +104,14 @@ public class ApiData {
         Scanner scanner = new Scanner(apiCaller.url2.openStream());
 
         while(scanner.hasNext()){
-            inline2 = scanner.nextLine()+inline2;
+            inline2 = inline2 + scanner.nextLine();
         }
         System.out.println(inline2);
 
+        String inlinesub2 =  inline2.substring(4);
+        System.out.println(inlinesub2);
         //JSON Parser for Turkey (It is an array)
-        JSONArray jsonArray = new JSONArray(inline2);
+        JSONArray jsonArray = new JSONArray(inlinesub2);
 
         String confirmedCase = jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed");
         String deaths = jsonArray.getJSONObject(jsonArray.length()-1).getString("Deaths");
@@ -133,20 +140,27 @@ public class ApiData {
         Scanner scanner = new Scanner(apiCaller.url2.openStream());
 
         while(scanner.hasNext()){
-            inline3 = scanner.nextLine()+inline3;
+            inline3 = inline3 + scanner.nextLine();
         }
         System.out.println(inline3);
+        String inline3sub = inline3.substring(4);
 
         //JSON Parser for Turkey (It is an array)
-        JSONArray jsonArray = new JSONArray(inline3);
+        JSONArray jsonArray = new JSONArray(inline3sub);
 
         for(int i=0;i<jsonArray.length();i++){
         String confirmedNumberString = jsonArray.getJSONObject(i).getString("Confirmed");
-        int confirmedNumberInteger = stringToIntegerParser.parser(jsonArray.getJSONObject(i).getString("Confirmed"));
-
-        arrlistString.add(confirmedNumberString);
+        String deathNumberString = jsonArray.getJSONObject(i).getString("Deaths");
+        String recoveredNumberString = jsonArray.getJSONObject(i).getString("Recovered");
+        int confirmedNumberInteger = stringToIntegerParser.parser(confirmedNumberString);
+        int deathNumberInt = stringToIntegerParser.parser(deathNumberString);
+        int recoveredNumberInt = stringToIntegerParser.parser(recoveredNumberString);
 
         arrlistIntiger.add(confirmedNumberInteger);
+        turkeyDeathData.add(deathNumberInt);
+        turkeyRecoveredData.add(recoveredNumberInt);
+
+
     }
 
         System.out.println(arrlistIntiger);
@@ -158,10 +172,13 @@ public class ApiData {
 
         }
 
+        a = dataDateArrayList.get(jsonArray.length()-1);
+        System.out.println(a);
+
         System.out.println(dataDateArrayList);
 
-        anasininami = dataDateArrayList.stream().collect(Collectors.joining("','", "'", "'"));
-        System.out.println(anasininami);
+        graphXaxis = dataDateArrayList.stream().collect(Collectors.joining("','", "'", "'"));
+        System.out.println(graphXaxis);
 
     }
 
