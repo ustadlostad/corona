@@ -9,6 +9,7 @@ public class ApiCaller {
     static URL url1;
     static URL url2;
 
+
     public static void globalApiHealthCheck(String endPoint) throws IOException {
 
         url1 = new URL(endPoint);

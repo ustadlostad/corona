@@ -42,30 +42,30 @@
                 <span class="badge badge-primary badge-pill">${totalConfirmed}</span>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+           <%-- <li class="list-group-item d-flex justify-content-between align-items-center">
                 New Confirmed Cases
                 <span class="badge badge-primary badge-pill">${newConfirmed}</span>
-            </li>
+            </li>--%>
 
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 Total Deaths
                 <span class="badge badge-primary badge-pill">${totalDeaths}</span>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%--<li class="list-group-item d-flex justify-content-between align-items-center">
                 New Deaths
                 <span class="badge badge-primary badge-pill">${newDeaths}</span>
             </li>
-
+--%>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 Total Recovered
                 <span class="badge badge-primary badge-pill">${totalRecovered}</span>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%--      <li class="list-group-item d-flex justify-content-between align-items-center">
                 New Recovered
                 <span class="badge badge-primary badge-pill">${newRecovered}</span>
-            </li>
+            </li>--%>
 
         </ul>
     </div>
@@ -134,8 +134,8 @@
                 label: 'Confirmed Cases Day By Day', // Name the series
                 data: confirmedCasesDayByDay, // Specify the data values array
                 fill: false,
-                borderColor: '#FAE701', // Add custom color border (Line)
-                backgroundColor: '#FAE701', // Add custom color background (Points and Fill)
+                borderColor: '#EEB534', // Add custom color border (Line)
+                backgroundColor: '#EEB534', // Add custom color background (Points and Fill)
                 borderWidth: 3 // Specify bar border width
             },
 
@@ -143,8 +143,8 @@
                 label: 'Deaths', // Name the series
                 data: deathDataDayByDay, // Specify the data values array
                 fill: false,
-                borderColor: '#FE2F06', // Add custom color border (Line)
-                backgroundColor: '#FE2F06', // Add custom color background (Points and Fill)
+                borderColor: '#DFA5A6', // Add custom color border (Line)
+                backgroundColor: '#DFA5A6', // Add custom color background (Points and Fill)
                 borderWidth: 3 // Specify bar border width
             },
 
@@ -152,8 +152,8 @@
                 label: 'Recovered', // Name the series
                 data: recoveredDataDayByDay, // Specify the data values array
                 fill: false,
-                borderColor: '#11DB14', // Add custom color border (Line)
-                backgroundColor: '#11DB14', // Add custom color background (Points and Fill)
+                borderColor: '#AFC7CE', // Add custom color border (Line)
+                backgroundColor: '#AFC7CE', // Add custom color background (Points and Fill)
                 borderWidth: 3 // Specify bar border width
             }
 
