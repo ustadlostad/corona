@@ -8,8 +8,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ApiData {
@@ -17,6 +16,8 @@ public class ApiData {
     static public String inline;
     static public String inline2;
     static public String inline3;
+    static public String inline4;
+    static public String inline4Sub;
     static public String a;
 
     static public int intNewConfirmed;
@@ -48,9 +49,15 @@ public class ApiData {
    static public ArrayList<Integer> arrlistIntiger = new ArrayList<Integer>();
    static public ArrayList<String> dataDateArrayList = new ArrayList<String>();
    static public ArrayList<Integer> turkeyDeathData = new ArrayList<Integer>();
-    static public ArrayList<Integer> turkeyRecoveredData = new ArrayList<Integer>();
+   static public ArrayList<Integer> turkeyRecoveredData = new ArrayList<Integer>();
+   static public ArrayList<String> countryArrayList = new ArrayList<String>();
+   static public Map<String,String> countryMap = new HashMap<>();
+   //static public List<String> countryListDeneme = new ArrayList<String>();
 
    static public String graphXaxis;
+
+    public ApiData() throws JSONException {
+    }
 
     public static void apiDataCollectorGlobal() throws IOException, JSONException {
 
@@ -179,6 +186,31 @@ public class ApiData {
 
         graphXaxis = dataDateArrayList.stream().collect(Collectors.joining("','", "'", "'"));
         System.out.println(graphXaxis);
+
+    }
+
+    static public void getCountryNames() throws IOException, JSONException {
+
+        Scanner scanner = new Scanner(apiCaller.url3.openStream());
+
+        while (scanner.hasNext()){
+            inline4 = inline4+scanner.nextLine();
+        }
+        //System.out.println(inline4);
+        inline4Sub = inline4.substring(4);
+        System.out.println(inline4Sub);
+
+        JSONArray jsonArray = new JSONArray(inline4Sub);
+
+        for(int i=0; i<jsonArray.length(); i++){
+
+            String countriesSlug = jsonArray.getJSONObject(i).getString("Slug");
+            String countries = jsonArray.getJSONObject(i).getString("Country");
+            System.out.println(countries);
+            countryArrayList.add(countriesSlug);
+            countryMap.put(countriesSlug,countries);
+
+        }
 
     }
 

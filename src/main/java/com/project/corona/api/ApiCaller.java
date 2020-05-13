@@ -8,6 +8,8 @@ public class ApiCaller {
 
     static URL url1;
     static URL url2;
+    static URL url3;
+    static URL url4;
 
 
     public static void globalApiHealthCheck(String endPoint) throws IOException {
@@ -25,12 +27,43 @@ public class ApiCaller {
             System.out.println("API fucked up!!");
         }
 
-
     }
 
     public static void turkeyApiHealthCheck(String endPoint) throws IOException {
 
         url2 = new URL(endPoint);
+
+        HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
+        conn.setRequestMethod("GET");
+        conn.connect();
+        int statusCodeTurkey = conn.getResponseCode();
+
+        if(statusCodeTurkey==200){
+            System.out.println("API is alive");
+        }else {
+            System.out.println("API fucked up!!");
+        }
+    }
+
+    public static void countryNamesApi(String endPoint) throws IOException {
+
+        url3 = new URL(endPoint);
+
+        HttpURLConnection conn = (HttpURLConnection) url3.openConnection();
+        conn.setRequestMethod("GET");
+        conn.connect();
+        int statusCodeTurkey = conn.getResponseCode();
+
+        if(statusCodeTurkey==200){
+            System.out.println("API is alive");
+        }else {
+            System.out.println("API fucked up!!");
+        }
+    }
+
+    public static void countryApiHealthCheck(String endPoint) throws IOException {
+
+        url4 = new URL(endPoint);
 
         HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
         conn.setRequestMethod("GET");
