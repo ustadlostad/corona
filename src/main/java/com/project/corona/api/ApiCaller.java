@@ -64,13 +64,14 @@ public class ApiCaller {
     public static void countryApiHealthCheck(String endPoint) throws IOException {
 
         url4 = new URL(endPoint);
+        System.out.println("API : " +url4);
 
-        HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) url4.openConnection();
         conn.setRequestMethod("GET");
         conn.connect();
-        int statusCodeTurkey = conn.getResponseCode();
+        int statusCodeCountry = conn.getResponseCode();
 
-        if(statusCodeTurkey==200){
+        if(statusCodeCountry==200){
             System.out.println("API is alive");
         }else {
             System.out.println("API fucked up!!");

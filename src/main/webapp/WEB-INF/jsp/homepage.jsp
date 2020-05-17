@@ -102,33 +102,33 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
 
 <link rel="stylesheet" type="text/css" href="resources\css\dropDown.css">
 
     <div class="container">
         <div class="row">
+
+            <div class="col"></div>
+
             <div class="col">
 
-                <h1 style="text-align: center">Turkey</h1>
+                <h1 style="text-align: center">${countryName}</h1>
 
                     <ul class="list-group mx-auto" style="width: 500px">
 
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Confirmed Cases
-                            <span class="badge badge-primary badge-pill">${turkeyConfirmed}</span>
+                            <span class="badge badge-primary badge-pill">${countryConfirmed}</span>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Deaths
-                            <span class="badge badge-primary badge-pill">${turkeyDeaths}</span>
+                            <span class="badge badge-primary badge-pill">${countryDeaths}</span>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Recovered Cases
-                            <span class="badge badge-primary badge-pill">${turkeyRecovered}</span>
+                            <span class="badge badge-primary badge-pill">${countryRecovered}</span>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -139,69 +139,24 @@
             </div>
 
             <div class="col">
-                <%--<div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select Country
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <c:forEach var="country" items="${countryMap}">
-                            <a class="dropdown-item" href="#">${country.value}</a>
-                        </c:forEach>
-                    </div>
-                </div>--%>
-            </div>
-
-           <%-- <div class="col">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Press to Select Country</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <c:forEach var="country" items="${countryMap}">
-                            <a href="#">${country.value}</a>
-                        </c:forEach>
-                        <script>
-                            $(document).ready(function () {
-                                $('#myDropdown a').on('click', function () {
-                                    txt= ($(this).text());
-                                    alert("Your Favourite Sports is "+txt);
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>--%>
-
-            <div class="col">
-                <form method="post">
+                <form method="get" action="/" id="form-id">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select name="key" class="form-control" id="exampleFormControlSelect1">
-                                <c:forEach var="country" items="${countryMap}">
-                            <option  value="${country.key}">${country.value}</option>
+                        <label for="exampleFormControlSelect1">Select Country</label>
+                        <select name="yigit" class="form-control" id="exampleFormControlSelect1"  onchange="document.getElementById('form-id').submit();" >
+                            <c:forEach var="country" items="${countryMap}">
+                                    <c:choose>
+                                        <c:when test="${parameter == country.key}">
+                                            <option selected value="${country.key}">${country.value}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${country.key}">${country.value}</option>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </c:forEach>
                         </select>
                     </div>
-
-                    <button type="submit" class="btn btn-success">Bring It</button>
-
+                    <%= request.getParameter("yigit") %>
                 </form>
-               <%-- <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Press to Select Country</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <c:forEach var="country" items="${countryMap}">
-                            <a href="#">${country.value}</a>
-                        </c:forEach>
-                        <script>
-                            $(document).ready(function () {
-                                $('#myDropdown a').on('click', function () {
-                                    txt= ($(this).text());
-                                    alert("Your Favourite Sports is "+txt);
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>--%>
             </div>
 
         </div>
@@ -276,7 +231,8 @@
                 ],
                 xAxes:[{
                     ticks: {
-
+                        autoSkip:true,
+                        maxTicksLimit:10,
                     }
                 }]
             }

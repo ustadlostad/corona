@@ -1,5 +1,6 @@
 package com.project.corona.api;
 
+import com.project.corona.controller.HomeController;
 import com.project.corona.functions.DateDataArrenger;
 import com.project.corona.functions.StringToIntegerParser;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -7,6 +8,7 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,27 +22,34 @@ public class ApiData {
     static public String inline4Sub;
     static public String a;
 
-    static public int intNewConfirmed;
+    /*static public int intNewConfirmed;
     static public int intTotalConfirmed;
     static public int intNewDeaths;
     static public int intTotalDeaths;
     static public int intNewRecovered;
-    static public int intTotalRecovered;
+    static public int intTotalRecovered;*/
 
-    static public int intTurkeyConfirmedCases;
+    /*static public int intTurkeyConfirmedCases;
     static public int intTurkeyDeaths;
-    static public int intTurkeyRecoveredCases;
+    static public int intTurkeyRecoveredCases;*/
 
-    static public String formattedNewConfirmed;
+    /*static public int intCountryConfirmedCases;
+    static public int intCountryDeaths;
+    static public int intCountryRecoveredCases;*/
+
+
     static public String formattedTotalConfirmed;
-    static public String formattedNewDeaths;
     static public String formattedTotalDeaths;
-    static public String formattedNewRecovered;
     static public String formattedTotalRecovered;
 
     static public String formattedTurkeyConfirmedCases;
     static public String formattedTurkeyDeaths;
     static public String formattedTurkeyRecoveredCases;
+    static public String countryName;
+
+    static public String formattedCountryConfirmedCases;
+    static public String formattedCountryDeaths;
+    static public String formattedCountryRecoveredCases;
 
    static ApiCaller apiCaller = new ApiCaller();
    static StringToIntegerParser stringToIntegerParser = new StringToIntegerParser();
@@ -48,6 +57,7 @@ public class ApiData {
 
    static public ArrayList<Integer> arrlistIntiger = new ArrayList<Integer>();
    static public ArrayList<String> dataDateArrayList = new ArrayList<String>();
+   static public ArrayList<String> dataDateArrayListCountry = new ArrayList<String>();
    static public ArrayList<Integer> turkeyDeathData = new ArrayList<Integer>();
    static public ArrayList<Integer> turkeyRecoveredData = new ArrayList<Integer>();
    static public ArrayList<String> countryArrayList = new ArrayList<String>();
@@ -55,9 +65,6 @@ public class ApiData {
    //static public List<String> countryListDeneme = new ArrayList<String>();
 
    static public String graphXaxis;
-
-    public ApiData() throws JSONException {
-    }
 
     public static void apiDataCollectorGlobal() throws IOException, JSONException {
 
@@ -67,42 +74,24 @@ public class ApiData {
             inline = inline + scanner.nextLine();
         }
 
-        System.out.println("inline :" +inline);
         String inlinesub =  inline.substring(4);
-        System.out.println(inlinesub);
 
         //JsonParser General Stats
         JSONObject jsonObject = new JSONObject(inlinesub);
-        String newConfirmed = jsonObject.getJSONObject("Global").getString("NewConfirmed");
-        String totalConfirmed = jsonObject.getJSONObject("Global").getString("TotalConfirmed");
-        String newDeaths = jsonObject.getJSONObject("Global").getString("NewDeaths");
-        String totalDeaths = jsonObject.getJSONObject("Global").getString("TotalDeaths");
-        String newRecovered = jsonObject.getJSONObject("Global").getString("NewRecovered");
-        String totalRecovered = jsonObject.getJSONObject("Global").getString("TotalRecovered");
 
-        System.out.println(newConfirmed);
-        System.out.println(totalConfirmed);
-        System.out.println(newDeaths);
-        System.out.println(totalDeaths);
-        System.out.println(newRecovered);
-        System.out.println(totalRecovered);
+        //String totalConfirmed = jsonObject.getJSONObject("Global").getString("TotalConfirmed");
+        //String totalDeaths = jsonObject.getJSONObject("Global").getString("TotalDeaths");
+        //String totalRecovered = jsonObject.getJSONObject("Global").getString("TotalRecovered");
 
         //String to Integer General Stats
-        intNewConfirmed = stringToIntegerParser.parser(newConfirmed);
-        intTotalConfirmed = stringToIntegerParser.parser(totalConfirmed);
-        intNewDeaths = stringToIntegerParser.parser(newDeaths);
-        intTotalDeaths = stringToIntegerParser.parser(totalDeaths);
-        intNewRecovered = stringToIntegerParser.parser(newRecovered);
-        intTotalRecovered = stringToIntegerParser.parser(totalRecovered);
+        //intTotalConfirmed = stringToIntegerParser.parser(jsonObject.getJSONObject("Global").getString("TotalConfirmed"));
+        //intTotalDeaths = stringToIntegerParser.parser(jsonObject.getJSONObject("Global").getString("TotalDeaths"));
+        //intTotalRecovered = stringToIntegerParser.parser(jsonObject.getJSONObject("Global").getString("TotalRecovered"));
 
         //formatter object
-
-        formattedNewConfirmed = formatter.format(intNewConfirmed);
-        formattedTotalConfirmed = formatter.format(intTotalConfirmed);
-        formattedNewDeaths = formatter.format(intNewDeaths);
-        formattedTotalDeaths = formatter.format(intTotalDeaths);
-        formattedNewRecovered = formatter.format(intNewRecovered);
-        formattedTotalRecovered = formatter.format(intTotalRecovered);
+        formattedTotalConfirmed = formatter.format(stringToIntegerParser.parser(jsonObject.getJSONObject("Global").getString("TotalConfirmed")));
+        formattedTotalDeaths = formatter.format(stringToIntegerParser.parser(jsonObject.getJSONObject("Global").getString("TotalDeaths")));
+        formattedTotalRecovered = formatter.format(stringToIntegerParser.parser(jsonObject.getJSONObject("Global").getString("TotalRecovered")));
 
     }
 
@@ -113,29 +102,26 @@ public class ApiData {
         while(scanner.hasNext()){
             inline2 = inline2 + scanner.nextLine();
         }
-        System.out.println(inline2);
 
         String inlinesub2 =  inline2.substring(4);
-        System.out.println(inlinesub2);
+
         //JSON Parser for Turkey (It is an array)
         JSONArray jsonArray = new JSONArray(inlinesub2);
 
-        String confirmedCase = jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed");
+        countryName = jsonArray.getJSONObject(jsonArray.length()-1).getString("Country");
+
+        /*String confirmedCase = jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed");
         String deaths = jsonArray.getJSONObject(jsonArray.length()-1).getString("Deaths");
         String recoveredCase = jsonArray.getJSONObject(jsonArray.length()-1).getString("Recovered");
 
-        System.out.println(confirmedCase);
-        System.out.println(deaths);
-        System.out.println(recoveredCase);
-
         //String to Integer Parser
-        intTurkeyConfirmedCases = stringToIntegerParser.parser(confirmedCase);
-        intTurkeyDeaths = stringToIntegerParser.parser(deaths);
-        intTurkeyRecoveredCases = stringToIntegerParser.parser(recoveredCase);
+        intTurkeyConfirmedCases = stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed"));
+        intTurkeyDeaths = stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Deaths"));
+        intTurkeyRecoveredCases = stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Recovered"));*/
 
-        formattedTurkeyConfirmedCases = formatter.format(intTurkeyConfirmedCases);
-        formattedTurkeyDeaths = formatter.format(intTurkeyDeaths);
-        formattedTurkeyRecoveredCases = formatter.format(intTurkeyRecoveredCases);
+        formattedTurkeyConfirmedCases = formatter.format(stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed")));
+        formattedTurkeyDeaths = formatter.format( stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Deaths")));
+        formattedTurkeyRecoveredCases = formatter.format(stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Recovered")));
 
     }
 
@@ -159,6 +145,7 @@ public class ApiData {
         String confirmedNumberString = jsonArray.getJSONObject(i).getString("Confirmed");
         String deathNumberString = jsonArray.getJSONObject(i).getString("Deaths");
         String recoveredNumberString = jsonArray.getJSONObject(i).getString("Recovered");
+
         int confirmedNumberInteger = stringToIntegerParser.parser(confirmedNumberString);
         int deathNumberInt = stringToIntegerParser.parser(deathNumberString);
         int recoveredNumberInt = stringToIntegerParser.parser(recoveredNumberString);
@@ -214,5 +201,46 @@ public class ApiData {
 
     }
 
+    static public void apiDataCollectorCountries() throws IOException, JSONException {
+
+        String yeni = "";
+
+        Scanner scanner = new Scanner(new URL(HomeController.countryApiUrl).openStream());
+
+        while(scanner.hasNext()){
+           yeni = yeni + scanner.nextLine();
+        }
+        System.out.println(yeni);
+
+        System.out.println("yeni array : " +yeni);
+
+        //JSON Parser for Turkey (It is an array)
+        JSONArray jsonArray2 = new JSONArray(yeni);
+
+        countryName = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Country");
+        /*String confirmedCase2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Confirmed");
+        String deaths2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths");
+        String recoveredCase2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered");
+
+        //String to Integer Parser
+        intCountryConfirmedCases = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Confirmed"));
+        intCountryDeaths = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths"));
+        intCountryRecoveredCases = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered"));*/
+
+        formattedCountryConfirmedCases = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Confirmed")));
+        formattedCountryDeaths = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths")));
+        formattedCountryRecoveredCases = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered")));
+
+        for(int i=0;i<jsonArray2.length();i++){
+            String dataDates = jsonArray2.getJSONObject(i).getString("Date");
+            String dataDatesTrimmed = DateDataArrenger.arrenger(dataDates);
+            dataDateArrayListCountry.add(dataDatesTrimmed);
+
+        }
+
+        a = dataDateArrayListCountry.get(jsonArray2.length()-1);
+        System.out.println(a);
+
+    }
 
 }
