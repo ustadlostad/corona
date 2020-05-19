@@ -129,6 +129,7 @@ public class ApiData {
 
         arrlistIntiger.clear();
         dataDateArrayList.clear();
+        inline3 = "";
 
         Scanner scanner = new Scanner(apiCaller.url2.openStream());
 
@@ -136,10 +137,10 @@ public class ApiData {
             inline3 = inline3 + scanner.nextLine();
         }
         System.out.println(inline3);
-        String inline3sub = inline3.substring(4);
+        //String inline3sub = inline3.substring(4);
 
         //JSON Parser for Turkey (It is an array)
-        JSONArray jsonArray = new JSONArray(inline3sub);
+        JSONArray jsonArray = new JSONArray(inline3);
 
         for(int i=0;i<jsonArray.length();i++){
         String confirmedNumberString = jsonArray.getJSONObject(i).getString("Confirmed");
@@ -240,6 +241,59 @@ public class ApiData {
 
         a = dataDateArrayListCountry.get(jsonArray2.length()-1);
         System.out.println(a);
+
+    }
+
+    static public void countryGraphConfirmedCases() throws IOException, JSONException {
+
+        arrlistIntiger.clear();
+        dataDateArrayList.clear();
+        turkeyDeathData.clear();
+        turkeyRecoveredData.clear();
+        inline3 = "";
+
+        Scanner scanner = new Scanner(new URL(HomeController.countryApiUrl).openStream());
+
+        while(scanner.hasNext()){
+            inline3 = inline3 + scanner.nextLine();
+        }
+        System.out.println("country inline 3 :"+inline3);
+        //String inline3sub = inline3.substring(4);
+
+        //JSON Parser for Turkey (It is an array)
+        JSONArray jsonArray = new JSONArray(inline3);
+
+        for(int i=0;i<jsonArray.length();i++){
+            String confirmedNumberString = jsonArray.getJSONObject(i).getString("Confirmed");
+            String deathNumberString = jsonArray.getJSONObject(i).getString("Deaths");
+            String recoveredNumberString = jsonArray.getJSONObject(i).getString("Recovered");
+
+            int confirmedNumberInteger = stringToIntegerParser.parser(confirmedNumberString);
+            int deathNumberInt = stringToIntegerParser.parser(deathNumberString);
+            int recoveredNumberInt = stringToIntegerParser.parser(recoveredNumberString);
+
+            arrlistIntiger.add(confirmedNumberInteger);
+            turkeyDeathData.add(deathNumberInt);
+            turkeyRecoveredData.add(recoveredNumberInt);
+
+        }
+
+        System.out.println(arrlistIntiger);
+
+        for(int i=0;i<jsonArray.length();i++){
+            String dataDates = jsonArray.getJSONObject(i).getString("Date");
+            String dataDatesTrimmed = DateDataArrenger.arrenger(dataDates);
+            dataDateArrayList.add(dataDatesTrimmed);
+
+        }
+
+        a = dataDateArrayList.get(jsonArray.length()-1);
+        System.out.println(a);
+
+        System.out.println(dataDateArrayList);
+
+        graphXaxis = dataDateArrayList.stream().collect(Collectors.joining("','", "'", "'"));
+        System.out.println(graphXaxis);
 
     }
 

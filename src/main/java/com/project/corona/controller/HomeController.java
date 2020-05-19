@@ -91,6 +91,14 @@ public class HomeController {
             model.addAttribute("countryConfirmed", ApiData.formattedCountryConfirmedCases);
             model.addAttribute("lastUpdate", ApiData.a);
 
+            ApiData.countryGraphConfirmedCases();
+
+            model.addAttribute("confirmedCasesDayByDay", ApiData.arrlistIntiger);
+            model.addAttribute("xAxis", ApiData.graphXaxis);
+            model.addAttribute("deathsNumbersDayByDay", ApiData.turkeyDeathData);
+            model.addAttribute("recoveredNumbersDayByDay", ApiData.turkeyRecoveredData);
+
+
         }
 
         return "homepage";

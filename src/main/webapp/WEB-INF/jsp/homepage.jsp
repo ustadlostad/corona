@@ -155,7 +155,7 @@
                                 </c:forEach>
                         </select>
                     </div>
-                    <%= request.getParameter("yigit") %>
+                    <div style="display: none"><%= request.getParameter("yigit") %></div>
                 </form>
             </div>
 
@@ -232,7 +232,7 @@
                 xAxes:[{
                     ticks: {
                         autoSkip:true,
-                        maxTicksLimit:10,
+                        maxTicksLimit:7,
                     }
                 }]
             }
