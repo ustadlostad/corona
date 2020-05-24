@@ -12,8 +12,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan({"com.project.corona"})
 @EnableScheduling
+@ComponentScan(basePackages = {"com.project.corona"})
 public class SpringWebConfig implements WebMvcConfigurer {
 
     @Bean
@@ -35,7 +35,7 @@ public class SpringWebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
+                .addResourceHandler("/webapp/**")
+                .addResourceLocations("/webapp/");
     }
 }

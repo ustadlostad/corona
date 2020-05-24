@@ -3,12 +3,10 @@ package com.project.corona.controller;
 import com.project.corona.api.ApiCaller;
 import com.project.corona.api.ApiData;
 import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
 import java.io.IOException;
