@@ -14,10 +14,11 @@
     <name>corona</name>
     
     <description>Corona Project</description>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>CoronaApplication.App</start-class>
     </properties>
 
     <dependencies>
@@ -29,20 +30,20 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <scope>provided</scope>
+    </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web-services</artifactId>
+    </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>

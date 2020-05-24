@@ -1,3 +1,4 @@
+
 package com.project.corona;
 
 import org.springframework.context.annotation.Bean;
@@ -35,7 +36,8 @@ public class SpringWebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/webapp/**")
-                .addResourceLocations("/webapp/");
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 }
+
