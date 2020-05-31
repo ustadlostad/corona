@@ -232,15 +232,16 @@ public class ApiData {
         formattedCountryDeaths = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths")));
         formattedCountryRecoveredCases = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered")));
 
-        for(int i=0;i<jsonArray2.length();i++){
+        /*for(int i=0;i<jsonArray2.length();i++){
             String dataDates = jsonArray2.getJSONObject(i).getString("Date");
             String dataDatesTrimmed = DateDataArrenger.arrenger(dataDates);
             dataDateArrayListCountry.add(dataDatesTrimmed);
-
         }
 
+        System.out.println();
+
         a = dataDateArrayListCountry.get(jsonArray2.length()-1);
-        System.out.println(a);
+        System.out.println("last update : "+a);*/
 
     }
 
