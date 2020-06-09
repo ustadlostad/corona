@@ -3,10 +3,13 @@ package com.project.corona.controller;
 import com.project.corona.api.ApiCaller;
 import com.project.corona.api.ApiData;
 import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -18,9 +21,11 @@ public class HomeController {
     static public String countryApiUrl;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(Model model,@RequestParam(required = false) String yigit) throws IOException, JSONException, ParseException {
+    public String homePage(Model model,@RequestParam(required = false) String yigit, HttpServletRequest request) throws IOException, JSONException, ParseException {
 
         if(yigit == null) {
+
+
 
             ApiCaller.globalApiHealthCheck(summaryUrl);
             ApiData.apiDataCollectorGlobal();

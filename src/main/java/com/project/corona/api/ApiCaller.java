@@ -3,6 +3,7 @@ package com.project.corona.api;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import com.project.corona.controller.errorPageController;
 
 public class ApiCaller {
 
@@ -10,7 +11,6 @@ public class ApiCaller {
     static URL url2;
     static URL url3;
     static URL url4;
-
 
     public static void globalApiHealthCheck(String endPoint) throws IOException {
 
@@ -25,6 +25,7 @@ public class ApiCaller {
             System.out.println("API is alive");
         }else {
             System.out.println("API fucked up!!");
+
         }
 
     }
