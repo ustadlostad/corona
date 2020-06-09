@@ -1,5 +1,7 @@
 package com.project.corona.controller;
 
+
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +13,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
-public class errorPageController {
 
-    @RequestMapping(value = "/error", method = RequestMethod.GET)
+@Controller
+public class errorPageController implements ErrorController {
+
+    @RequestMapping(value = "/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
@@ -28,4 +31,8 @@ public class errorPageController {
         return "errorPage";
     }
 
+    @Override
+    public String getErrorPath() {
+        return "/error";
+    }
 }

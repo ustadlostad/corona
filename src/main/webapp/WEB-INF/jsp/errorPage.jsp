@@ -39,7 +39,7 @@
 <div class="overlay"></div>
 <div class="terminal">
     <h1>Error <span class="errorcode">429</span></h1>
-    <p class="output">You get this error because I use a free API or there is a problem in my code I don't know exactly right now, but I will fix it soon. I hope so.</p>
+    <p class="output">You get this error because I am using a free API or there is a problem in my code I don't know exactly right now, but I will fix it soon. I hope so.</p>
     <p class="output"> <a href='<s:url value="/"></s:url>'> Click to return homepage :( </a>.</p>
     <p class="output">Good luck.</p>
 </div>
