@@ -129,6 +129,8 @@ public class ApiData {
 
         arrlistIntiger.clear();
         dataDateArrayList.clear();
+        turkeyDeathData.clear();
+        turkeyRecoveredData.clear();
         inline3 = "";
 
         Scanner scanner = new Scanner(apiCaller.url2.openStream());

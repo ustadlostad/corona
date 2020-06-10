@@ -25,8 +25,6 @@ public class HomeController {
 
         if(yigit == null) {
 
-
-
             ApiCaller.globalApiHealthCheck(summaryUrl);
             ApiData.apiDataCollectorGlobal();
 
