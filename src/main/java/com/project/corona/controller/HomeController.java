@@ -37,6 +37,7 @@ public class HomeController {
             model.addAttribute("totalConfirmed", ApiData.formattedTotalConfirmed);
             model.addAttribute("totalDeaths", ApiData.formattedTotalDeaths);
             model.addAttribute("totalRecovered", ApiData.formattedTotalRecovered);
+            model.addAttribute("totalActive",ApiData.formattedTotalActiveCases);
 
             model.addAttribute("countryName", ApiData.countryName);
             model.addAttribute("countryRecovered", ApiData.formattedTurkeyRecoveredCases);
@@ -73,6 +74,7 @@ public class HomeController {
             model.addAttribute("totalConfirmed", ApiData.formattedTotalConfirmed);
             model.addAttribute("totalDeaths", ApiData.formattedTotalDeaths);
             model.addAttribute("totalRecovered", ApiData.formattedTotalRecovered);
+            model.addAttribute("totalActive",ApiData.formattedTotalActiveCases);
 
             //country info pull
             ApiCaller.countryNamesApi("https://api.covid19api.com/countries");

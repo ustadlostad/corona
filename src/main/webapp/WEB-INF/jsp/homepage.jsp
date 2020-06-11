@@ -90,6 +90,11 @@
             <span class="badge badge-primary badge-pill">${newRecovered}</span>
         </li>--%>
 
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Total Acive Cases
+            <span class="badge badge-primary badge-pill">${totalActive}</span>
+        </li>
+
     </ul>
 </div>
 
