@@ -140,7 +140,7 @@
             <form method="get" action="/" id="form-id">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Select Country</label>
-                    <select name="yigit" class="form-control" id="exampleFormControlSelect1" onchange="document.getElementById('form-id').submit();">
+                    <select name="country" class="form-control" id="exampleFormControlSelect1" onchange="document.getElementById('form-id').submit();">
                         <c:forEach var="country" items="${countryMap}">
                             <c:choose>
                                 <c:when test="${parameter == country.key}">
@@ -153,7 +153,7 @@
                         </c:forEach>
                     </select>
                 </div>
-                <div style="display: none"><%= request.getParameter("yigit") %>
+                <div style="display: none"><%= request.getParameter("country") %>
                 </div>
             </form>
         </div>
@@ -238,6 +238,10 @@
 
         }
     });
+</script>
+
+<script>
+    document.body.style.zoom="95%"
 </script>
 
 

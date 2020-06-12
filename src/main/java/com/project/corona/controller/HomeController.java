@@ -21,9 +21,9 @@ public class HomeController {
     static public String countryApiUrl;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(Model model,@RequestParam(required = false) String yigit, HttpServletRequest request) throws IOException, JSONException, ParseException {
+    public String homePage(Model model,@RequestParam(required = false) String country, HttpServletRequest request) throws IOException, JSONException, ParseException {
 
-        if(yigit == null) {
+        if(country == null) {
 
             ApiCaller.globalApiHealthCheck(summaryUrl);
             ApiData.apiDataCollectorGlobal();
@@ -59,12 +59,12 @@ public class HomeController {
 
         }else{
 
-            model.addAttribute("parameter",yigit);
+            model.addAttribute("parameter",country);
 
             //url initilize
             String baseUrl = "https://api.covid19api.com/total/dayone/country/";
-            String countryKey = yigit;
-            countryApiUrl = baseUrl + yigit;
+            String countryKey = country;
+            countryApiUrl = baseUrl + country;
 
 
             //api chack for summary
@@ -100,7 +100,6 @@ public class HomeController {
             model.addAttribute("xAxis", ApiData.graphXaxis);
             model.addAttribute("deathsNumbersDayByDay", ApiData.turkeyDeathData);
             model.addAttribute("recoveredNumbersDayByDay", ApiData.turkeyRecoveredData);
-
 
         }
 
