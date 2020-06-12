@@ -30,11 +30,12 @@ public class ApiData {
     static public int intTurkeyConfirmedCases;
     static public int intTurkeyDeaths;
     static public int intTurkeyRecoveredCases;
+    static public int intTurkeyActiveCases;
 
-    /*static public int intCountryConfirmedCases;
+    static public int intCountryConfirmedCases;
     static public int intCountryDeaths;
-    static public int intCountryRecoveredCases;*/
-
+    static public int intCountryRecoveredCases;
+    static public int intCountryActiveCases;
 
     static public String formattedTotalConfirmed;
     static public String formattedTotalDeaths;
@@ -45,11 +46,13 @@ public class ApiData {
     static public String formattedTurkeyConfirmedCases;
     static public String formattedTurkeyDeaths;
     static public String formattedTurkeyRecoveredCases;
+    static public String formattedTurkeyActiveCases;
     static public String countryName;
 
     static public String formattedCountryConfirmedCases;
     static public String formattedCountryDeaths;
     static public String formattedCountryRecoveredCases;
+    static public String formattedCountryActiveCases;
 
 
    static ApiCaller apiCaller = new ApiCaller();
@@ -123,10 +126,14 @@ public class ApiData {
         intTurkeyConfirmedCases = stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed"));
         intTurkeyDeaths = stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Deaths"));
         intTurkeyRecoveredCases = stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Recovered"));
+        intTurkeyActiveCases = intTurkeyConfirmedCases - intTurkeyRecoveredCases - intTurkeyDeaths;
+        System.out.println("turkey active cases : "+intTurkeyActiveCases);
+
 
         formattedTurkeyConfirmedCases = formatter.format(stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Confirmed")));
         formattedTurkeyDeaths = formatter.format( stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Deaths")));
         formattedTurkeyRecoveredCases = formatter.format(stringToIntegerParser.parser(jsonArray.getJSONObject(jsonArray.length()-1).getString("Recovered")));
+        formattedTurkeyActiveCases = formatter.format(intTurkeyActiveCases);
 
     }
 
@@ -228,16 +235,18 @@ public class ApiData {
         countryName = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Country");
         /*String confirmedCase2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Confirmed");
         String deaths2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths");
-        String recoveredCase2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered");
+        String recoveredCase2 = jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered");*/
 
         //String to Integer Parser
         intCountryConfirmedCases = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Confirmed"));
         intCountryDeaths = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths"));
-        intCountryRecoveredCases = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered"));*/
+        intCountryRecoveredCases = stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered"));
+        intCountryActiveCases = intCountryConfirmedCases - intCountryRecoveredCases - intCountryDeaths;
 
         formattedCountryConfirmedCases = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Confirmed")));
         formattedCountryDeaths = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Deaths")));
         formattedCountryRecoveredCases = formatter.format(stringToIntegerParser.parser(jsonArray2.getJSONObject(jsonArray2.length()-1).getString("Recovered")));
+        formattedCountryActiveCases = formatter.format(intCountryActiveCases);
 
         /*for(int i=0;i<jsonArray2.length();i++){
             String dataDates = jsonArray2.getJSONObject(i).getString("Date");

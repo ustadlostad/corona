@@ -43,6 +43,7 @@ public class HomeController {
             model.addAttribute("countryRecovered", ApiData.formattedTurkeyRecoveredCases);
             model.addAttribute("countryDeaths", ApiData.formattedTurkeyDeaths);
             model.addAttribute("countryConfirmed", ApiData.formattedTurkeyConfirmedCases);
+            model.addAttribute("countryActive",ApiData.formattedTurkeyActiveCases);
 
             model.addAttribute("confirmedCasesDayByDay", ApiData.arrlistIntiger);
             model.addAttribute("xAxis", ApiData.graphXaxis);
@@ -90,6 +91,7 @@ public class HomeController {
             model.addAttribute("countryRecovered", ApiData.formattedCountryRecoveredCases);
             model.addAttribute("countryDeaths", ApiData.formattedCountryDeaths);
             model.addAttribute("countryConfirmed", ApiData.formattedCountryConfirmedCases);
+            model.addAttribute("countryActive",ApiData.formattedCountryActiveCases);
             model.addAttribute("lastUpdate", ApiData.a);
 
             ApiData.countryGraphConfirmedCases();

@@ -56,8 +56,6 @@
 
     <h1 style="text-align: center">Global Stats</h1>
 
-    <br>
-
     <ul class="list-group mx-auto" style="width: 500px">
 
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -91,7 +89,7 @@
         </li>--%>
 
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            Total Acive Cases
+            Total Active Cases
             <span class="badge badge-primary badge-pill">${totalActive}</span>
         </li>
 
@@ -124,6 +122,11 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Recovered Cases
                     <span class="badge badge-primary badge-pill">${countryRecovered}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Active Cases
+                    <span class="badge badge-primary badge-pill">${countryActive}</span>
                 </li>
 
                 <li class="list-group-item d-flex justify-content-between align-items-center">
