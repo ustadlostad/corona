@@ -51,9 +51,8 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
-    <div>
-        <div class="row">
-            <div class="col-4">
+    <div align="center">
+
 
                 <h1 style="text-align: center">Global Stats</h1>
 
@@ -85,30 +84,31 @@
                     </li>
                 </ul>
             </div>
-
-                 <div class="col my-auto" align="center">
-                    <form method="get" action="/" id="form-id" style="width: 500px" >
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Select Country</label>
-                            <select name="country" class="form-control" id="exampleFormControlSelect1" onchange="document.getElementById('form-id').submit();">
-                                <c:forEach var="country" items="${countryMap}">
-                                    <c:choose>
-                                        <c:when test="${parameter == country.key}">
-                                            <option selected value="${country.key}">${country.value}</option>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <option value="${country.key}">${country.value}</option>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div style="display: none"><%= request.getParameter("country") %></div>
-                    </form>
-                 </div>
-             </div>
-        </div>
     </div>
+
+<br>
+<br>
+
+<div class="col my-auto" align="center">
+    <form method="get" action="/" id="form-id" style="width: 500px" >
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Country</label>
+            <select name="country" class="form-control" id="exampleFormControlSelect1" onchange="document.getElementById('form-id').submit();">
+                <c:forEach var="country" items="${countryMap}">
+                    <c:choose>
+                        <c:when test="${parameter == country.key}">
+                            <option selected value="${country.key}">${country.value}</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value="${country.key}">${country.value}</option>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+        </div>
+        <div style="display: none"><%= request.getParameter("country") %></div>
+    </form>
+</div>
 
     <br>
 
