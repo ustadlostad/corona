@@ -26,6 +26,8 @@ public class errorPageController implements ErrorController {
 
             if(statusCode == HttpStatus.TOO_MANY_REQUESTS.value()) {
                 return "errorPage";
+            }else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()){
+                return "errorPage";
             }
         }
         return "errorPage";

@@ -51,198 +51,181 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
+    <div>
+        <div class="row">
+            <div class="col-4">
 
-<div>
+                <h1 style="text-align: center">Global Stats</h1>
 
-    <h1 style="text-align: center">Global Stats</h1>
+                <ul class="list-group mx-auto" style="width: 500px">
 
-    <ul class="list-group mx-auto" style="width: 500px">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Confirmed Cases
+                        <span class="badge badge-primary badge-pill">${totalConfirmed}</span>
+                    </li>
 
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Total Confirmed Cases
-            <span class="badge badge-primary badge-pill">${totalConfirmed}</span>
-        </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Deaths
+                        <span class="badge badge-primary badge-pill">${totalDeaths}</span>
+                    </li>
 
-        <%-- <li class="list-group-item d-flex justify-content-between align-items-center">
-             New Confirmed Cases
-             <span class="badge badge-primary badge-pill">${newConfirmed}</span>
-         </li>--%>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Recovered
+                        <span class="badge badge-primary badge-pill">${totalRecovered}</span>
+                    </li>
 
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Total Deaths
-            <span class="badge badge-primary badge-pill">${totalDeaths}</span>
-        </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Active Cases
+                        <span class="badge badge-primary badge-pill">${totalActive}</span>
+                    </li>
 
-        <%--<li class="list-group-item d-flex justify-content-between align-items-center">
-            New Deaths
-            <span class="badge badge-primary badge-pill">${newDeaths}</span>
-        </li>
-        --%>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Total Recovered
-            <span class="badge badge-primary badge-pill">${totalRecovered}</span>
-        </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Last Update
+                        <span class="badge badge-primary badge-pill">${lastUpdate}</span>
+                    </li>
+                </ul>
+            </div>
 
-        <%--<li class="list-group-item d-flex justify-content-between align-items-center">
-            New Recovered
-            <span class="badge badge-primary badge-pill">${newRecovered}</span>
-        </li>--%>
-
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Total Active Cases
-            <span class="badge badge-primary badge-pill">${totalActive}</span>
-        </li>
-
-    </ul>
-</div>
-
-<br>
-
-<div class="container">
-    <div class="row">
-
-        <div class="col"></div>
-
-        <div class="col">
-
-            <h1 style="text-align: center">${countryName}</h1>
-
-            <ul class="list-group mx-auto" style="width: 500px">
-
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Confirmed Cases
-                    <span class="badge badge-primary badge-pill">${countryConfirmed}</span>
-                </li>
-
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Deaths
-                    <span class="badge badge-primary badge-pill">${countryDeaths}</span>
-                </li>
-
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Recovered Cases
-                    <span class="badge badge-primary badge-pill">${countryRecovered}</span>
-                </li>
-
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Active Cases
-                    <span class="badge badge-primary badge-pill">${countryActive}</span>
-                </li>
-
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Last Updated
-                    <span class="badge badge-primary badge-pill">${lastUpdate}</span>
-                </li>
-            </ul>
+                 <div class="col my-auto" align="center">
+                    <form method="get" action="/" id="form-id" style="width: 500px" >
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Country</label>
+                            <select name="country" class="form-control" id="exampleFormControlSelect1" onchange="document.getElementById('form-id').submit();">
+                                <c:forEach var="country" items="${countryMap}">
+                                    <c:choose>
+                                        <c:when test="${parameter == country.key}">
+                                            <option selected value="${country.key}">${country.value}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${country.key}">${country.value}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div style="display: none"><%= request.getParameter("country") %></div>
+                    </form>
+                 </div>
+             </div>
         </div>
-
-        <div class="col">
-            <form method="get" action="/" id="form-id">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select Country</label>
-                    <select name="country" class="form-control" id="exampleFormControlSelect1" onchange="document.getElementById('form-id').submit();">
-                        <c:forEach var="country" items="${countryMap}">
-                            <c:choose>
-                                <c:when test="${parameter == country.key}">
-                                    <option selected value="${country.key}">${country.value}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${country.key}">${country.value}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div style="display: none"><%= request.getParameter("country") %>
-                </div>
-            </form>
-        </div>
-
     </div>
-</div>
 
-<br>
+    <br>
 
-<div>
-    <canvas id="my1Chart" height="400" width="1200" style="margin: auto"></canvas>
-</div>
+    <div>
+        <div class="row">
+            <div class="col-4">
 
-<script>
+                <h1 style="text-align: center">${countryName}</h1>
 
-    var ctx1 = document.getElementById("my1Chart").getContext('2d');
+                <ul class="list-group mx-auto" style="width: 500px">
 
-    var confirmedCasesDayByDay = ${confirmedCasesDayByDay};
-    var graphDataXaxis = [${xAxis}];
-    var deathDataDayByDay = ${deathsNumbersDayByDay};
-    var recoveredDataDayByDay = ${recoveredNumbersDayByDay};
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Confirmed Cases
+                        <span class="badge badge-primary badge-pill">${countryConfirmed}</span>
+                    </li>
 
-    console.log(confirmedCasesDayByDay);
-    console.log(deathDataDayByDay);
-    console.log(recoveredDataDayByDay);
-    console.log(graphDataXaxis);
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Deaths
+                        <span class="badge badge-primary badge-pill">${countryDeaths}</span>
+                    </li>
 
-    var my1Chart = new Chart(ctx1, {
-        type: 'line',
-        data: {
-            labels: graphDataXaxis,
-            lineTension: 0.1,
-            fill: true,
-            datasets: [{
-                label: 'Confirmed Cases Day By Day', // Name the series
-                data: confirmedCasesDayByDay, // Specify the data values array
-                fill: false,
-                borderColor: '#EEB534', // Add custom color border (Line)
-                backgroundColor: '#EEB534', // Add custom color background (Points and Fill)
-                borderWidth: 3 // Specify bar border width
-            },
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Recovered Cases
+                        <span class="badge badge-primary badge-pill">${countryRecovered}</span>
+                    </li>
 
-                {
-                    label: 'Deaths', // Name the series
-                    data: deathDataDayByDay, // Specify the data values array
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Active Cases
+                        <span class="badge badge-primary badge-pill">${countryActive}</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Last Update
+                        <span class="badge badge-primary badge-pill">${lastUpdate}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="container">
+                <div class="col">
+                    <canvas id="my1Chart" height="400" width="1200" style="margin: auto"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var ctx1 = document.getElementById("my1Chart").getContext('2d');
+
+        var confirmedCasesDayByDay = ${confirmedCasesDayByDay};
+        var graphDataXaxis = [${xAxis}];
+        var deathDataDayByDay = ${deathsNumbersDayByDay};
+        var recoveredDataDayByDay = ${recoveredNumbersDayByDay};
+
+        console.log(confirmedCasesDayByDay);
+        console.log(deathDataDayByDay);
+        console.log(recoveredDataDayByDay);
+        console.log(graphDataXaxis);
+
+        var my1Chart = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: graphDataXaxis,
+                lineTension: 0.1,
+                fill: true,
+                datasets: [{
+                    label: 'Confirmed Cases Day By Day', // Name the series
+                    data: confirmedCasesDayByDay, // Specify the data values array
                     fill: false,
-                    borderColor: '#DFA5A6', // Add custom color border (Line)
-                    backgroundColor: '#DFA5A6', // Add custom color background (Points and Fill)
+                    borderColor: '#EEB534', // Add custom color border (Line)
+                    backgroundColor: '#EEB534', // Add custom color background (Points and Fill)
                     borderWidth: 3 // Specify bar border width
                 },
 
-                {
-                    label: 'Recovered', // Name the series
-                    data: recoveredDataDayByDay, // Specify the data values array
-                    fill: false,
-                    borderColor: '#AFC7CE', // Add custom color border (Line)
-                    backgroundColor: '#AFC7CE', // Add custom color background (Points and Fill)
-                    borderWidth: 3 // Specify bar border width
-                }
+                    {
+                        label: 'Deaths', // Name the series
+                        data: deathDataDayByDay, // Specify the data values array
+                        fill: false,
+                        borderColor: '#DFA5A6', // Add custom color border (Line)
+                        backgroundColor: '#DFA5A6', // Add custom color background (Points and Fill)
+                        borderWidth: 3 // Specify bar border width
+                    },
 
-            ]
-        },
-        options: {
-            responsive: false, // Instruct chart js to respond nicely.
-            maintainAspectRatio: false, // Add to prevent default behaviour of full-width/heigh
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
+                    {
+                        label: 'Recovered', // Name the series
+                        data: recoveredDataDayByDay, // Specify the data values array
+                        fill: false,
+                        borderColor: '#AFC7CE', // Add custom color border (Line)
+                        backgroundColor: '#AFC7CE', // Add custom color background (Points and Fill)
+                        borderWidth: 3 // Specify bar border width
                     }
 
+                ]
+            },
+            options: {
+                responsive: true, // Instruct chart js to respond nicely.
+                maintainAspectRatio: false, // Add to prevent default behaviour of full-width/heigh
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+
+                    }
+
+                    ],
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 7,
+                        }
+                    }]
                 }
 
-                ],
-                xAxes: [{
-                    ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 7,
-                    }
-                }]
             }
-
-        }
-    });
-</script>
-
-<script>
-    document.body.style.zoom="95%"
-</script>
-
-
+        });
+    </script>
+</body>
 </html>
