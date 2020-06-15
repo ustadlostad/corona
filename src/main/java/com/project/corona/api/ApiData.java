@@ -3,6 +3,7 @@ package com.project.corona.api;
 import com.project.corona.controller.HomeController;
 import com.project.corona.functions.DateDataArrenger;
 import com.project.corona.functions.StringToIntegerParser;
+import com.sun.corba.se.impl.resolver.SplitLocalResolverImpl;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -66,7 +67,6 @@ public class ApiData {
    static public ArrayList<Integer> turkeyRecoveredData = new ArrayList<Integer>();
    static public ArrayList<String> countryArrayList = new ArrayList<String>();
    static public Map<String,String> countryMap = new HashMap<>();
-   //static public List<String> countryListDeneme = new ArrayList<String>();
 
    static public String graphXaxis;
 
@@ -225,7 +225,6 @@ public class ApiData {
         while(scanner.hasNext()){
            yeni = yeni + scanner.nextLine();
         }
-        System.out.println(yeni);
 
         System.out.println("yeni array : " +yeni);
 
