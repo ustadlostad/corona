@@ -3,6 +3,7 @@ package com.project.corona.api;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import com.project.corona.controller.errorPageController;
 
 public class ApiCaller {
@@ -21,9 +22,9 @@ public class ApiCaller {
         conn.connect();
         int statusCodeGlobal = conn.getResponseCode();
 
-        if(statusCodeGlobal==200){
+        if (statusCodeGlobal == 200) {
             System.out.println("API is alive");
-        }else {
+        } else {
             System.out.println("API fucked up!!");
 
         }
@@ -39,9 +40,9 @@ public class ApiCaller {
         conn.connect();
         int statusCodeTurkey = conn.getResponseCode();
 
-        if(statusCodeTurkey==200){
+        if (statusCodeTurkey == 200) {
             System.out.println("API is alive");
-        }else {
+        } else {
             System.out.println("API fucked up!!");
         }
     }
@@ -55,9 +56,9 @@ public class ApiCaller {
         conn.connect();
         int statusCodeTurkey = conn.getResponseCode();
 
-        if(statusCodeTurkey==200){
+        if (statusCodeTurkey == 200) {
             System.out.println("API is alive");
-        }else {
+        } else {
             System.out.println("API fucked up!!");
         }
     }
@@ -65,16 +66,16 @@ public class ApiCaller {
     public static void countryApiHealthCheck(String endPoint) throws IOException {
 
         url4 = new URL(endPoint);
-        System.out.println("API : " +url4);
+        System.out.println("API : " + url4);
 
         HttpURLConnection conn = (HttpURLConnection) url4.openConnection();
         conn.setRequestMethod("GET");
         conn.connect();
         int statusCodeCountry = conn.getResponseCode();
 
-        if(statusCodeCountry==200){
+        if (statusCodeCountry == 200) {
             System.out.println("API is alive");
-        }else {
+        } else {
             System.out.println("API fucked up!!");
         }
     }
