@@ -314,11 +314,5 @@ public class ApiData {
 
     }
 
-    static public void topCountries() throws IOException {
-
-        Scanner scanner = new Scanner(new URL(HomeController.summaryUrl).openStream());
-
-
-    }
 
 }

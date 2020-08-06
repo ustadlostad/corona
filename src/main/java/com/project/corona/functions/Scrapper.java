@@ -26,7 +26,7 @@ public class Scrapper {
         String usaSelector = "div.container:nth-child(1) table.table.table-bordered.table-striped.table-dark tbody:nth-child(2) tr:nth-child(178) > td:nth-child(2)";
         String brasilSelector = "div.container:nth-child(1) table.table.table-bordered.table-striped.table-dark tbody:nth-child(2) tr:nth-child(24) > td:nth-child(2)";
         String indiaSelector = "div.container:nth-child(1) table.table.table-bordered.table-striped.table-dark tbody:nth-child(2) tr:nth-child(77) > td:nth-child(2)";
-        String russiaSelector = "div.container:nth-child(1) table.table.table-bordered.table-striped.table-dark tbody:nth-child(2) tr:nth-child(77) > td:nth-child(2)";
+        String russiaSelector = "div.container:nth-child(1) table.table.table-bordered.table-striped.table-dark tbody:nth-child(2) tr:nth-child(139) > td:nth-child(2)";
         String peruSelector = "div.container:nth-child(1) table.table.table-bordered.table-striped.table-dark tbody:nth-child(2) tr:nth-child(132) > td:nth-child(2)";
 
         Document doc = Jsoup.connect(url).get();
